@@ -13,6 +13,7 @@ final class TabBarViewController: UITabBarController {
         super.viewDidLoad()
       
         tabBar.tintColor = .label
+        tabBar.alpha = 0.3
        
         let vc1 = HomeViewController()
         let vc2 = RunHistoryViewController()

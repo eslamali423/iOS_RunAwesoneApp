@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import MapKit
 
 class HomeViewController: BaseViewController {
 
+    
+    //MARK:- Vars
     private let runButton : UIButton = {
        let button =  UIButton()
         button.setTitle("Start Run ", for: .normal)
@@ -22,26 +25,64 @@ class HomeViewController: BaseViewController {
         button.layer.shadowRadius = 0.5
         button.layer.shadowColor = UIColor.black.cgColor
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapRunButton), for: .touchUpInside)
         return button
     }()
     
+    private let topLabel : UILabel = {
+       let label = UILabel()
+        label.text = "Run Awesome"
+        label.font = .systemFont(ofSize: 32, weight: .bold)
+        label.textAlignment = .center
+        label.textColor = .darkGray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
     
+    private let mapView : MKMapView = {
+       let map = MKMapView()
+        map.translatesAutoresizingMaskIntoConstraints = false
+        map.alpha = 0.6
+       
+        
+        return map
+    }()
     
+    private var locationManager = LocationManager()
+    
+    //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        locationManager.checkLocationAuthorization()
         setupViews()
         configureConstraint()
        
+        mapView.delegate = self
     }
     
+    
+    //MARK:- Setuo Views
     private func setupViews(){
+        view.addSubview(topLabel)
+        view.addSubview(mapView)
         view.addSubview(runButton)
     }
-    
+    //MARK:- Configure Constraints
     private func configureConstraint(){
         NSLayoutConstraint.activate([
-        
+        // Title Lable Constraints
+            topLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 8),
+            topLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            // mapView Constraints
+            mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            mapView.topAnchor.constraint(equalTo: topLabel.bottomAnchor,constant: 8),
+            mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            // Run Button Constraints
             runButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             runButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
             runButton.widthAnchor.constraint(equalToConstant: 100),
@@ -51,14 +92,21 @@ class HomeViewController: BaseViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+   //MARK:- Did tap Run Button
+    @objc func didTapRunButton () {
+        print("pressed")
+        
+        
+        
     }
-    */
+}
 
+
+//MARK:- Extension for MapView Delegate
+extension HomeViewController : MKMapViewDelegate {
+    
+    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+        mapView.showsUserLocation = true
+        mapView.userTrackingMode = .follow
+    }
 }

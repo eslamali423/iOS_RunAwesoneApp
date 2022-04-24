@@ -14,6 +14,8 @@
 		28A2912E2815A195000BC4D0 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2912D2815A195000BC4D0 /* TabBarViewController.swift */; };
 		28A291312815A20F000BC4D0 /* RunHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A291302815A20F000BC4D0 /* RunHistoryViewController.swift */; };
 		28A291352815A523000BC4D0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A291342815A523000BC4D0 /* HomeViewController.swift */; };
+		28A2913A2815A7B7000BC4D0 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A291392815A7B7000BC4D0 /* GradientView.swift */; };
+		28A2913D2815A88E000BC4D0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2913C2815A88E000BC4D0 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		28A2912D2815A195000BC4D0 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		28A291302815A20F000BC4D0 /* RunHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunHistoryViewController.swift; sourceTree = "<group>"; };
 		28A291342815A523000BC4D0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		28A291392815A7B7000BC4D0 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		28A2913C2815A88E000BC4D0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 		28A2910E28159E6F000BC4D0 /* RunAwesome */ = {
 			isa = PBXGroup;
 			children = (
+				28A291382815A7A7000BC4D0 /* Views */,
 				28A2912A2815A040000BC4D0 /* Others */,
 				28A2912528159F49000BC4D0 /* Controllers */,
 				28A2911D28159E70000BC4D0 /* Info.plist */,
@@ -71,6 +76,7 @@
 				28A2912D2815A195000BC4D0 /* TabBarViewController.swift */,
 				28A291302815A20F000BC4D0 /* RunHistoryViewController.swift */,
 				28A291342815A523000BC4D0 /* HomeViewController.swift */,
+				28A2913C2815A88E000BC4D0 /* BaseViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -84,6 +90,14 @@
 				28A2911A28159E70000BC4D0 /* LaunchScreen.storyboard */,
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		28A291382815A7A7000BC4D0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				28A291392815A7B7000BC4D0 /* GradientView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,8 +171,10 @@
 			files = (
 				28A2912E2815A195000BC4D0 /* TabBarViewController.swift in Sources */,
 				28A2911028159E6F000BC4D0 /* AppDelegate.swift in Sources */,
+				28A2913A2815A7B7000BC4D0 /* GradientView.swift in Sources */,
 				28A291312815A20F000BC4D0 /* RunHistoryViewController.swift in Sources */,
 				28A2911228159E6F000BC4D0 /* SceneDelegate.swift in Sources */,
+				28A2913D2815A88E000BC4D0 /* BaseViewController.swift in Sources */,
 				28A291352815A523000BC4D0 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

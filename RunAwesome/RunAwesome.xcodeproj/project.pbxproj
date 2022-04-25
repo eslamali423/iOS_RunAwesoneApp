@@ -19,6 +19,7 @@
 		28A291402815AFF7000BC4D0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2913F2815AFF7000BC4D0 /* LocationManager.swift */; };
 		28A291432816EEFE000BC4D0 /* CurrentRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A291422816EEFE000BC4D0 /* CurrentRunViewController.swift */; };
 		28A2914728172F50000BC4D0 /* TimeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2914628172F50000BC4D0 /* TimeExtension.swift */; };
+		28A2914B281755C0000BC4D0 /* DistanceExtension .swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2914A281755C0000BC4D0 /* DistanceExtension .swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		28A2913F2815AFF7000BC4D0 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		28A291422816EEFE000BC4D0 /* CurrentRunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRunViewController.swift; sourceTree = "<group>"; };
 		28A2914628172F50000BC4D0 /* TimeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeExtension.swift; sourceTree = "<group>"; };
+		28A2914A281755C0000BC4D0 /* DistanceExtension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DistanceExtension .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				28A2914628172F50000BC4D0 /* TimeExtension.swift */,
+				28A2914A281755C0000BC4D0 /* DistanceExtension .swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				28A291402815AFF7000BC4D0 /* LocationManager.swift in Sources */,
 				28A2911228159E6F000BC4D0 /* SceneDelegate.swift in Sources */,
 				28A2913D2815A88E000BC4D0 /* BaseViewController.swift in Sources */,
+				28A2914B281755C0000BC4D0 /* DistanceExtension .swift in Sources */,
 				28A291352815A523000BC4D0 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

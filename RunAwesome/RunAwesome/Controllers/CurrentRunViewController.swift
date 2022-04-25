@@ -344,8 +344,15 @@ extension CurrentRunViewController : CLLocationManagerDelegate {
             startLocation = locations.first
         } else if let location  = locations.last {
             runDistance += endLocation.distance(from: location)
-            self.distanceLabel.text = self.runDistance 
+            self.distanceLabel.text = "\(self.runDistance.metersToMiles().toString(palces: 2))"
+            
+            if timeElapsed > 0 && runDistance > 0 {
+                paceLabel.text = computePace(seconds: timeElapsed, miles: runDistance.metersToMiles())
+            }
+            
         }
+        endLocation = locations.last
+        
     }
     
     

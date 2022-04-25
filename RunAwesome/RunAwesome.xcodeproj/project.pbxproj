@@ -18,6 +18,7 @@
 		28A2913D2815A88E000BC4D0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2913C2815A88E000BC4D0 /* BaseViewController.swift */; };
 		28A291402815AFF7000BC4D0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2913F2815AFF7000BC4D0 /* LocationManager.swift */; };
 		28A291432816EEFE000BC4D0 /* CurrentRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A291422816EEFE000BC4D0 /* CurrentRunViewController.swift */; };
+		28A2914728172F50000BC4D0 /* TimeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2914628172F50000BC4D0 /* TimeExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		28A2913C2815A88E000BC4D0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		28A2913F2815AFF7000BC4D0 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		28A291422816EEFE000BC4D0 /* CurrentRunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRunViewController.swift; sourceTree = "<group>"; };
+		28A2914628172F50000BC4D0 /* TimeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 		28A2910E28159E6F000BC4D0 /* RunAwesome */ = {
 			isa = PBXGroup;
 			children = (
+				28A2914528172F39000BC4D0 /* Extensions */,
 				28A291382815A7A7000BC4D0 /* Views */,
 				28A2912A2815A040000BC4D0 /* Others */,
 				28A2912528159F49000BC4D0 /* Controllers */,
@@ -104,6 +107,14 @@
 				28A2913F2815AFF7000BC4D0 /* LocationManager.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		28A2914528172F39000BC4D0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				28A2914628172F50000BC4D0 /* TimeExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28A2914728172F50000BC4D0 /* TimeExtension.swift in Sources */,
 				28A2912E2815A195000BC4D0 /* TabBarViewController.swift in Sources */,
 				28A2911028159E6F000BC4D0 /* AppDelegate.swift in Sources */,
 				28A2913A2815A7B7000BC4D0 /* GradientView.swift in Sources */,

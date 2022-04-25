@@ -9,10 +9,10 @@ import UIKit
 import CoreLocation
 
 class CurrentRunViewController: BaseViewController   {
-
+    
     //MARK:- Vars
     private let topLabel : UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "Running..."
         label.font = .systemFont(ofSize: 32, weight: .bold)
         label.textAlignment = .center
@@ -24,7 +24,7 @@ class CurrentRunViewController: BaseViewController   {
     
     
     private let distanceLabel : UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "0:00"
         label.font = .systemFont(ofSize: 80, weight: .heavy)
         label.textAlignment = .center
@@ -35,7 +35,7 @@ class CurrentRunViewController: BaseViewController   {
     }()
     
     private let distanceSubTitleLabel : UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "Miles "
         label.font = .systemFont(ofSize: 24)
         label.textAlignment = .center
@@ -55,10 +55,10 @@ class CurrentRunViewController: BaseViewController   {
         return stackView
     }()
     
-
+    
     
     private let timeLabel : UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "00:00:00"
         label.font = .systemFont(ofSize: 25, weight: .bold)
         label.textAlignment = .center
@@ -69,7 +69,7 @@ class CurrentRunViewController: BaseViewController   {
     }()
     
     private let timeSubTitleLabel : UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "Duration"
         label.font = .systemFont(ofSize: 18)
         label.textAlignment = .center
@@ -80,8 +80,8 @@ class CurrentRunViewController: BaseViewController   {
     }()
     
     
-   
-      
+    
+    
     
     private let timeStackView : UIStackView = {
         let stackView   = UIStackView()
@@ -92,10 +92,10 @@ class CurrentRunViewController: BaseViewController   {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
- 
+    
     
     private let paceLabel : UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "00:00"
         label.font = .systemFont(ofSize: 25, weight: .bold)
         label.textAlignment = .center
@@ -106,7 +106,7 @@ class CurrentRunViewController: BaseViewController   {
     }()
     
     private let paceSubTitleLabel : UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "avg.Pace"
         label.font = .systemFont(ofSize: 18)
         label.textAlignment = .center
@@ -125,8 +125,8 @@ class CurrentRunViewController: BaseViewController   {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-
-
+    
+    
     private let detailsStackView : UIStackView = {
         let stackView   = UIStackView()
         stackView.axis  = NSLayoutConstraint.Axis.horizontal
@@ -137,13 +137,13 @@ class CurrentRunViewController: BaseViewController   {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-
     
-  
+    
+    
     
     
     private let stopRunButton : UIButton = {
-       let button =  UIButton()
+        let button =  UIButton()
         button.setTitle("Stop", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 25, weight : .bold)
         
@@ -155,12 +155,12 @@ class CurrentRunViewController: BaseViewController   {
         button.layer.shadowRadius = 0.5
         button.layer.shadowColor = UIColor.black.cgColor
         button.translatesAutoresizingMaskIntoConstraints = false
-       // button.addTarget(self, action: #selector(didTapRunButton), for: .touchUpInside)
+         button.addTarget(self, action: #selector(didTapStopButton), for: .touchUpInside)
         return button
     }()
     
     private let cameraButton : UIButton = {
-       let button =  UIButton()
+        let button =  UIButton()
         button.setImage(UIImage(systemName: "camera",withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14, weight : .bold)
         
@@ -168,24 +168,24 @@ class CurrentRunViewController: BaseViewController   {
         button.layer.borderColor = UIColor.black.cgColor
         button.tintColor = .systemGray
         button.layer.cornerRadius = 35
-      
+        
         button.translatesAutoresizingMaskIntoConstraints = false
-       // button.addTarget(self, action: #selector(didTapRunButton), for: .touchUpInside)
+        // button.addTarget(self, action: #selector(didTapRunButton), for: .touchUpInside)
         return button
     }()
     
     private let settingsButton : UIButton = {
-       let button =  UIButton()
+        let button =  UIButton()
         button.setImage(UIImage(systemName: "gear",withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14, weight : .bold)
         button.tintColor = .systemGray
         button.layer.borderWidth = 0.1
         button.layer.borderColor = UIColor.black.cgColor
-       
+        
         button.layer.cornerRadius = 35
-      
+        
         button.translatesAutoresizingMaskIntoConstraints = false
-       // button.addTarget(self, action: #selector(didTapRunButton), for: .touchUpInside)
+        // button.addTarget(self, action: #selector(didTapRunButton), for: .touchUpInside)
         return button
     }()
     
@@ -200,7 +200,7 @@ class CurrentRunViewController: BaseViewController   {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-
+    
     
     
     private var startLocation : CLLocation!
@@ -217,14 +217,20 @@ class CurrentRunViewController: BaseViewController   {
     //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupLayouts()
         cinfigureConstraints()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        locationManager.manager.delegate = self
+        startRun()
+    }
+    
     //MARK:- Setup Layouts
     private func setupLayouts(){
-   
+        
         
         distanceStackView.addArrangedSubview(distanceLabel)
         distanceStackView.addArrangedSubview(distanceSubTitleLabel)
@@ -232,8 +238,8 @@ class CurrentRunViewController: BaseViewController   {
         timeStackView.addArrangedSubview(timeLabel)
         timeStackView.addArrangedSubview(timeSubTitleLabel)
         
-       paceStackView.addArrangedSubview(paceLabel)
-       paceStackView.addArrangedSubview(paceSubTitleLabel)
+        paceStackView.addArrangedSubview(paceLabel)
+        paceStackView.addArrangedSubview(paceSubTitleLabel)
         
         detailsStackView.addArrangedSubview(timeStackView)
         detailsStackView.addArrangedSubview(paceStackView)
@@ -255,22 +261,22 @@ class CurrentRunViewController: BaseViewController   {
     //MARK:- Configure Constraints
     private func cinfigureConstraints(){
         NSLayoutConstraint.activate([
-        
+            
             // Title Lable Constraints
-                topLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 8),
-                topLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        
-//
-//            distanceStackView.topAnchor.constraint(equalTo: topLabel.bottomAnchor, constant: 30),
-//            distanceStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//
-
-           distanceStackView.topAnchor.constraint(equalTo: topLabel.bottomAnchor, constant: 30),
-           distanceStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-    
+            topLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 8),
+            topLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+//            
+//                        distanceStackView.topAnchor.constraint(equalTo: topLabel.bottomAnchor, constant: 30),
+//                        distanceStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            
+//            
+            distanceStackView.topAnchor.constraint(equalTo: topLabel.bottomAnchor, constant: 30),
+            distanceStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
             detailsStackView.topAnchor.constraint(equalTo: distanceLabel.bottomAnchor, constant: 100),
             detailsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-     
+            
             // Run Button Constraints
             
             stopRunButton.widthAnchor.constraint(equalToConstant: 140),
@@ -281,15 +287,66 @@ class CurrentRunViewController: BaseViewController   {
             
             settingsButton.widthAnchor.constraint(equalToConstant: 70),
             settingsButton.heightAnchor.constraint(equalToConstant: 70),
-
             
-           buttonsStackView.topAnchor.constraint(equalTo: detailsStackView.bottomAnchor, constant: 100),
-           buttonsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-  
+            
+            buttonsStackView.topAnchor.constraint(equalTo: detailsStackView.bottomAnchor, constant: 100),
+            buttonsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
             
         ])
     }
     
+    
+    //MARK:- Start Running Function
+    func startRun(){
+        locationManager.manager.startUpdatingLocation()
+        startTimer()
+    }
+    
+    //MARK:- Stop Running Function
+    func stopRuN()  {
+        locationManager.manager.stopUpdatingLocation()
+        stopTimer()
+    }
+    
+    //MARK:- Timer Functions
+    func startTimer() {
+        timeLabel.text = timeElapsed.formatTimeString()
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    func stopTimer(){
+        
+    }
+    
+    @objc private func updateTimer(){
+        timeElapsed += 1
+        timeLabel.text = timeElapsed.formatTimeString()
+    }
+    
+    //MARK:- Pace Function
+    private func computePace(seconds : Int, miles: Double) -> String {
+     pace = Int(Double(seconds) / miles)
+        return pace.formatTimeString()
+    }
+    
+    //MARK:- Stop Running Button Action
+    @objc private func didTapStopButton() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+}
+//MARK:- extension for location manager delegate
 
-
+extension CurrentRunViewController : CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if startLocation == nil {
+            startLocation = locations.first
+        } else if let location  = locations.last {
+            runDistance += endLocation.distance(from: location)
+            self.distanceLabel.text = self.runDistance 
+        }
+    }
+    
+    
 }

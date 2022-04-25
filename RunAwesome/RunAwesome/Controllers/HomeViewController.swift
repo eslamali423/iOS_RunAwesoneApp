@@ -94,7 +94,8 @@ class HomeViewController: BaseViewController {
 
    //MARK:- Did tap Run Button
     @objc func didTapRunButton () {
-        print("pressed")
+       let currentRunVc = CurrentRunViewController()
+        present(currentRunVc, animated: true, completion: nil)
         
         
         

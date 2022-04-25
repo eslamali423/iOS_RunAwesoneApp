@@ -17,6 +17,7 @@
 		28A2913A2815A7B7000BC4D0 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A291392815A7B7000BC4D0 /* GradientView.swift */; };
 		28A2913D2815A88E000BC4D0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2913C2815A88E000BC4D0 /* BaseViewController.swift */; };
 		28A291402815AFF7000BC4D0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2913F2815AFF7000BC4D0 /* LocationManager.swift */; };
+		28A291432816EEFE000BC4D0 /* CurrentRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A291422816EEFE000BC4D0 /* CurrentRunViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		28A291392815A7B7000BC4D0 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		28A2913C2815A88E000BC4D0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		28A2913F2815AFF7000BC4D0 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		28A291422816EEFE000BC4D0 /* CurrentRunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRunViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				28A291302815A20F000BC4D0 /* RunHistoryViewController.swift */,
 				28A291342815A523000BC4D0 /* HomeViewController.swift */,
 				28A2913C2815A88E000BC4D0 /* BaseViewController.swift */,
+				28A291422816EEFE000BC4D0 /* CurrentRunViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				28A2911028159E6F000BC4D0 /* AppDelegate.swift in Sources */,
 				28A2913A2815A7B7000BC4D0 /* GradientView.swift in Sources */,
 				28A291312815A20F000BC4D0 /* RunHistoryViewController.swift in Sources */,
+				28A291432816EEFE000BC4D0 /* CurrentRunViewController.swift in Sources */,
 				28A291402815AFF7000BC4D0 /* LocationManager.swift in Sources */,
 				28A2911228159E6F000BC4D0 /* SceneDelegate.swift in Sources */,
 				28A2913D2815A88E000BC4D0 /* BaseViewController.swift in Sources */,

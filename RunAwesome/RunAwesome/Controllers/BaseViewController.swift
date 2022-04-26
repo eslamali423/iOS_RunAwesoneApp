@@ -11,7 +11,7 @@ class BaseViewController: UIViewController {
 
     private lazy var backgroundLayer : GradientView = {
         
-        let view =  GradientView(colors: [#colorLiteral(red: 1, green: 0.9125576615, blue: 0.7229182124, alpha: 1),#colorLiteral(red: 1, green: 0.788628161, blue: 0.6327922344, alpha: 1),#colorLiteral(red: 1, green: 0.7911657095, blue: 0.5118403435, alpha: 1), #colorLiteral(red: 1, green: 0.8234727979, blue: 0.3423871994, alpha: 1)])
+        let view =  GradientView(colors: [#colorLiteral(red: 0.6950296164, green: 0.8941925168, blue: 0.9705882668, alpha: 1),#colorLiteral(red: 0.5255144238, green: 0.9675686955, blue: 0.9667950273, alpha: 1)])
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

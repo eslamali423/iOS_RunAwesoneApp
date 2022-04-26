@@ -59,7 +59,7 @@ class CurrentRunViewController: BaseViewController   {
     
     private let timeLabel : UILabel = {
         let label = UILabel()
-        label.text = "00:00:00"
+       label.text = "00:00"
         label.font = .systemFont(ofSize: 25, weight: .bold)
         label.textAlignment = .center
         label.textColor = .label
@@ -96,7 +96,7 @@ class CurrentRunViewController: BaseViewController   {
     
     private let paceLabel : UILabel = {
         let label = UILabel()
-        label.text = "00:00"
+       label.text = "00:00"
         label.font = .systemFont(ofSize: 25, weight: .bold)
         label.textAlignment = .center
         label.textColor = .label
@@ -149,7 +149,7 @@ class CurrentRunViewController: BaseViewController   {
         
         button.layer.borderWidth = 10.0
         button.layer.borderColor = UIColor.white.cgColor
-        button.backgroundColor =   #colorLiteral(red: 1, green: 0.808304131, blue: 0, alpha: 1)
+        button.backgroundColor =   #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.cornerRadius = 70
         button.layer.shadowRadius = 0.5
@@ -166,7 +166,7 @@ class CurrentRunViewController: BaseViewController   {
         
         button.layer.borderWidth = 0.1
         button.layer.borderColor = UIColor.black.cgColor
-        button.tintColor = .systemGray
+        button.tintColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         button.layer.cornerRadius = 35
         
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -178,7 +178,7 @@ class CurrentRunViewController: BaseViewController   {
         let button =  UIButton()
         button.setImage(UIImage(systemName: "gear",withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14, weight : .bold)
-        button.tintColor = .systemGray
+        button.tintColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         button.layer.borderWidth = 0.1
         button.layer.borderColor = UIColor.black.cgColor
         

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		282E7E0A2819C46F0088AC19 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E7E092819C46F0088AC19 /* HistoryTableViewCell.swift */; };
 		28A2911028159E6F000BC4D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2910F28159E6F000BC4D0 /* AppDelegate.swift */; };
 		28A2911228159E6F000BC4D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2911128159E6F000BC4D0 /* SceneDelegate.swift */; };
 		28A2911928159E70000BC4D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28A2911828159E70000BC4D0 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		282E7E092819C46F0088AC19 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		28A2910C28159E6F000BC4D0 /* RunAwesome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunAwesome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28A2910F28159E6F000BC4D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28A2911128159E6F000BC4D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		282E7E082819C4580088AC19 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				282E7E092819C46F0088AC19 /* HistoryTableViewCell.swift */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
 		28A2910328159E6F000BC4D0 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +80,7 @@
 		28A2910E28159E6F000BC4D0 /* RunAwesome */ = {
 			isa = PBXGroup;
 			children = (
+				282E7E082819C4580088AC19 /* CustomCells */,
 				28A2914528172F39000BC4D0 /* Extensions */,
 				28A291382815A7A7000BC4D0 /* Views */,
 				28A2912A2815A040000BC4D0 /* Others */,
@@ -195,6 +206,7 @@
 				28A2913A2815A7B7000BC4D0 /* GradientView.swift in Sources */,
 				28A291312815A20F000BC4D0 /* RunHistoryViewController.swift in Sources */,
 				28A291432816EEFE000BC4D0 /* CurrentRunViewController.swift in Sources */,
+				282E7E0A2819C46F0088AC19 /* HistoryTableViewCell.swift in Sources */,
 				28A291402815AFF7000BC4D0 /* LocationManager.swift in Sources */,
 				28A2911228159E6F000BC4D0 /* SceneDelegate.swift in Sources */,
 				28A2913D2815A88E000BC4D0 /* BaseViewController.swift in Sources */,

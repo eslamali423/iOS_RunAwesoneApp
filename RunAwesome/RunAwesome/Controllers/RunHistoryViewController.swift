@@ -37,7 +37,7 @@ class RunHistoryViewController: BaseViewController {
     private let tableView : UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(HistoryTableViewCell.self, forCellReuseIdentifier: HistoryTableViewCell.identifier)
         table.backgroundColor = .clear
         table.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         table.separatorColor = .white
@@ -46,6 +46,7 @@ class RunHistoryViewController: BaseViewController {
         
         
     }()
+    
     
   
     
@@ -106,7 +107,7 @@ extension RunHistoryViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell =  tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell =  tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.identifier, for: indexPath)
        
         return cell
     }

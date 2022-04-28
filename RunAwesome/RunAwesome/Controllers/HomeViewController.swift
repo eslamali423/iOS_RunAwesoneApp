@@ -59,6 +59,10 @@ class HomeViewController: BaseViewController {
     
     private var locationManager = LocationManager()
     
+   
+    
+    
+    
     //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()

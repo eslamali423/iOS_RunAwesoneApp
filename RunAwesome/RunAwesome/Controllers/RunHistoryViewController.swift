@@ -42,6 +42,7 @@ class RunHistoryViewController: BaseViewController {
         table.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         table.separatorColor = .white
         
+        
         return table
         
         
@@ -107,8 +108,13 @@ extension RunHistoryViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell =  tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.identifier, for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.identifier, for: indexPath) as? HistoryTableViewCell else {
+            return UITableViewCell()
+        }
        
+        cell.totalMiles = Double(indexPath.row)
+        cell.totalTime = "0:33:4"
+        cell.entryDate = "11/2/2022" 
         return cell
     }
    

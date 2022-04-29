@@ -8,14 +8,14 @@
 import UIKit
 
 class HistoryTableViewCell: UITableViewCell {
-
+    
     
     
     //MARK:- Vars
     static let identifier = "HistoryTableViewCell"
-
+    
     private let milesLabel : UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "0.0"
         label.textColor = .label
@@ -25,7 +25,7 @@ class HistoryTableViewCell: UITableViewCell {
     }()
     
     private let timeLabel : UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "00.00"
         label.textColor = .label
@@ -34,7 +34,7 @@ class HistoryTableViewCell: UITableViewCell {
         return label
     }()
     private let dateLabel : UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "00.00"
         label.textColor = .label
@@ -64,18 +64,48 @@ class HistoryTableViewCell: UITableViewCell {
         }
     }
     
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        setupViews()
+        configureConstraint()
     }
-
     
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
+    
+    func setupViews(){
+        backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        contentView.addSubview(milesLabel)
+        contentView.addSubview(timeLabel)
+        contentView.addSubview(dateLabel)
+    }
+    
+    func configureConstraint(){
+        NSLayoutConstraint.activate([
+        
+            milesLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 16),
+            milesLabel.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 16),
+            
+            
+           timeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 16),
+            timeLabel.topAnchor.constraint(equalTo: milesLabel.bottomAnchor,constant: 8),
+            timeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -16),
 
+            
+            dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -16),
+            dateLabel.centerYAnchor.constraint(equalTo: milesLabel.centerYAnchor)
+
+        
+        
+        ])
+    }
+    
+    
+    
+    
+    
 }

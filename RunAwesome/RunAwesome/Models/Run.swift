@@ -21,5 +21,27 @@ final class Run : Object {
     public private(set) var locations = List<Location>()
     
     
+    override class func primaryKey() -> String? {
+        return "id"
+    }
+    
+    override class func indexedProperties() -> [String] {
+        return  [ "pace" , "date", "duration"]
+    }
+    
+    
+    convenience init(pace : Int, distance : Double, duration: Int, locations: List<Location>) {
+        self.init()
+        self.date = Date()
+        self.pace = pace
+        self.duration = duration
+        self.distance = distance
+        self.locations = locations
+    }
+    
+    static func addRunToRealmpace (pace: Int, distance : Double, duration: Int, locations: List<Location>){
+        
+    }
+    
     
 }

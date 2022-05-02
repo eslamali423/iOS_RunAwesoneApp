@@ -332,6 +332,9 @@ class CurrentRunViewController: BaseViewController   {
     
     //MARK:- Stop Running Button Action
     @objc private func didTapStopButton() {
+        
+        
+        
         self.dismiss(animated: true, completion: nil)
     }
     

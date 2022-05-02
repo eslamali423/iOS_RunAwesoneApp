@@ -104,18 +104,30 @@ class RunHistoryViewController: BaseViewController {
 extension RunHistoryViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return Run.getAllRuns()?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.identifier, for: indexPath) as? HistoryTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.identifier, for: indexPath) as? HistoryTableViewCell,
+              let run =  Run.getAllRuns()?[indexPath.row] else {
             return UITableViewCell()
         }
        
-        cell.totalMiles = Double(indexPath.row)
-        cell.totalTime = "0:33:4"
-        cell.entryDate = "11/2/2022" 
+        cell.configureCell(model: run)
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        
+        guard let run = Run.getAllRuns()?[indexPath.row] else {
+            return
+        }
+        
+        print(run.distance.metersToMiles().toString(palces: 2))
     }
    
 }

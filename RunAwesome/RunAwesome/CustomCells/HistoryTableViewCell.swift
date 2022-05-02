@@ -104,6 +104,12 @@ class HistoryTableViewCell: UITableViewCell {
         ])
     }
     
+    func configureCell (model: Run) {
+        totalMiles = model.distance.metersToMiles()
+        totalTime = model.duration.formatTimeString()
+        entryDate = model.date.getDateString()
+    }
+    
     
     
     

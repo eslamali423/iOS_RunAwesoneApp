@@ -40,7 +40,28 @@ final class Run : Object {
     }
     
     static func addRunToRealmpace (pace: Int, distance : Double, duration: Int, locations: List<Location>){
-        
+        Constant.realmQueue.sync {
+            do {
+             let realm =  try Realm()
+                try realm.write({
+                    realm.add(Run(pace: pace, distance: distance, duration: duration, locations: locations))
+                    try realm.commitWrite()
+                })
+            } catch {
+                print("Cant store data to realm database")
+            }
+        }
+    }
+    
+    static func getAllRuns() ->  Results<Run>?  {
+        do {
+         let realm =  try Realm()
+            var runCollection = realm.objects(Run.self)
+            runCollection = runCollection.sorted(byKeyPath: "date", ascending: false)
+            return runCollection
+        } catch {
+           return nil
+        }
     }
     
     

@@ -7,6 +7,8 @@
 
 import UIKit
 import CoreLocation
+import RealmSwift
+
 
 class CurrentRunViewController: BaseViewController   {
     
@@ -209,7 +211,9 @@ class CurrentRunViewController: BaseViewController   {
     private var runDistance = 0.0
     private var timeElapsed = 0
     private var pace = 0
+    fileprivate var cooredLocation = List<Location>()
     private var timer = Timer()
+    
     
     
     private var locationManager = LocationManager()
@@ -333,7 +337,8 @@ class CurrentRunViewController: BaseViewController   {
     //MARK:- Stop Running Button Action
     @objc private func didTapStopButton() {
         
-        
+        stopRuN()
+        Run.addRunToRealmpace(pace: pace, distance: runDistance, duration: timeElapsed, locations: cooredLocation)
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -346,10 +351,15 @@ extension CurrentRunViewController : CLLocationManagerDelegate {
         if startLocation == nil {
             startLocation = locations.first
         } else if let location  = locations.last {
-            runDistance += endLocation.distance(from: location)
+           
+             runDistance += endLocation.distance(from: location)
+           
+            let newLocation = Location(lat: Double(endLocation.coordinate.latitude), long: Double(endLocation.coordinate.longitude))
+            cooredLocation.insert(newLocation, at: 0)
+            
             self.distanceLabel.text = "\(self.runDistance.metersToMiles().toString(palces: 2))"
             
-            if timeElapsed > 0 && runDistance > 0 {
+            if timeElapsed > 0 && runDistance > 0.0 {
                 paceLabel.text = computePace(seconds: timeElapsed, miles: runDistance.metersToMiles())
             }
             

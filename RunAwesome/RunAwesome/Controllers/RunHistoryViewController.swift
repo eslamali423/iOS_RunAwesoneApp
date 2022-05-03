@@ -127,6 +127,10 @@ extension RunHistoryViewController : UITableViewDelegate, UITableViewDataSource 
             return
         }
         
+        let vc = RunViewController()
+    
+        present(vc, animated: true, completion: nil)
+        
         print(run.distance.metersToMiles().toString(palces: 2))
     }
    

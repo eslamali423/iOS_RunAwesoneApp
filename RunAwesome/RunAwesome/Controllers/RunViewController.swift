@@ -18,7 +18,7 @@ class RunViewController: BaseViewController {
         let map = MKMapView()
         map.translatesAutoresizingMaskIntoConstraints = false
         map.alpha = 0.6
-        //map.delegate = self
+        map.delegate = self
         return map
     }()
     
@@ -43,8 +43,9 @@ class RunViewController: BaseViewController {
     
     
     init(run : Run) {
-        super.init(nibName: nil, bundle: nil)
+ 
         self.run = run
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -58,6 +59,13 @@ class RunViewController: BaseViewController {
         
         setupLayouts()
         configureConstraints()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        setMapOverlay()
         
     }
     
@@ -84,18 +92,65 @@ class RunViewController: BaseViewController {
             topHandel.heightAnchor.constraint(equalToConstant: 6),
             topHandel.centerYAnchor.constraint(equalTo: topHandelBackground.centerYAnchor),
             topHandel.centerXAnchor.constraint(equalTo: topHandelBackground.centerXAnchor),
-            
-            
-            
-            
-            
-            
-            
-            
-        
+    
         ])
         
         
     }
+    
+    //MARK:- Map Overlay
+    
+    func setMapOverlay() {
+        if map.overlays.count > 0 {
+            map.removeOverlays(map.overlays)
+        }
+        
+        map.addOverlay(getPolyline(form: run ))
+    }
+    
+    private func  getPolyline(run : Run) -> MKPolyline {
+        let coordnaits 
+    }
+    
+}
+
+//MARK:- Extension for Mapkit Delegate
+extension RunViewController : MKMapViewDelegate {
+   
+//    this fucntion to set the line for run on the map
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let polyline = overlay as! MKPolyline
+        let render  = MKPolylineRenderer(polyline: polyline)
+        render.strokeColor = UIColor.blue
+        render.lineWidth = 4
+        
+        return render
+    }
+    // this fucntion  to set the start and end point
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else  { return nil }
+        
+        let identifier = "mapAnnotation"
+        var annotationView = map.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
+        
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout = true
+        }else  {
+            annotationView!.annotation = annotation
+        }
+        // set the color for the pin
+        if annotation.title == "Start" {
+            annotationView!.pinTintColor = UIColor.red
+            
+        }else if annotation.title == "Finish" {
+            annotationView!.pinTintColor = UIColor.green
+        }
+        
+        return annotationView
+        
+    }
+    
+    
     
 }

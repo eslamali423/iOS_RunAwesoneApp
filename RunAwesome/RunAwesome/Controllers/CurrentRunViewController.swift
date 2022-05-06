@@ -337,9 +337,9 @@ class CurrentRunViewController: BaseViewController   {
     //MARK:- Stop Running Button Action
     @objc private func didTapStopButton() {
         
-        stopRuN()
+       
         Run.addRunToRealmpace(pace: pace, distance: runDistance, duration: timeElapsed, locations: cooredLocation)
-        
+        stopRuN()
         self.dismiss(animated: true, completion: nil)
     }
     

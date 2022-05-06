@@ -105,12 +105,40 @@ class RunViewController: BaseViewController {
             map.removeOverlays(map.overlays)
         }
         
-        map.addOverlay(getPolyline(form: run ))
+        map.addOverlay(getPolyline(run: run))
+        // for camera zoom in on the line
+        map.setRegion(centerMap(run: run), animated: true)
+        
+        
+        let startPoint = MKPointAnnotation()
+        startPoint.title = "Start"
+        let startLocation = run.locations[run.locations.count  - 1]
+        startPoint.coordinate = CLLocationCoordinate2D(latitude: startLocation.latiude, longitude: startLocation.longtude)
+        
+        map.addAnnotation(startPoint )
+    
+        let endPoint = MKPointAnnotation()
+        endPoint.title = "Finish"
+        let endLocation = run.locations[run.locations.count  - 1]
+        endPoint.coordinate = CLLocationCoordinate2D(latitude: endLocation.latiude, longitude: endLocation.longtude)
+        
+        map.addAnnotation(endPoint )
+    
     }
     
     private func  getPolyline(run : Run) -> MKPolyline {
-        let coordnaits 
+        var coord = [CLLocationCoordinate2D]()
+        for location in run.locations {
+            coord.append(CLLocationCoordinate2D(latitude: location.latiude, longitude: location.longtude))
+        }
+        
+        return MKPolyline(coordinates: coord, count: run.locations.count)
     }
+    
+    private func centerMap(run : Run) -> MKCoordinateRegion{
+         
+    }
+    
     
 }
 

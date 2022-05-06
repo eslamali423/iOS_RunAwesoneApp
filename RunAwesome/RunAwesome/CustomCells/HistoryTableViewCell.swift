@@ -46,7 +46,7 @@ class HistoryTableViewCell: UITableViewCell {
     
     var totalMiles : Double = 0.0 {
         didSet {
-            milesLabel.text = String(format: "%0.1f", totalMiles)
+            milesLabel.text = String(format: "%0.2f", totalMiles)
         }
     }
     

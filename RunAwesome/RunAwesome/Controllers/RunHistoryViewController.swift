@@ -65,6 +65,10 @@ class RunHistoryViewController: BaseViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     //MARK:- Set Layouts
     private func setLayout(){
         titleView.addSubview(topLabel)

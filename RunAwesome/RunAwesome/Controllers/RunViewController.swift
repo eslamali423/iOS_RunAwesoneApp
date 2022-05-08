@@ -18,7 +18,7 @@ class RunViewController: BaseViewController {
         let map = MKMapView()
         map.translatesAutoresizingMaskIntoConstraints = false
         map.alpha = 0.6
-        map.delegate = self
+       
         return map
     }()
     
@@ -59,6 +59,8 @@ class RunViewController: BaseViewController {
         
         setupLayouts()
         configureConstraints()
+        
+        map.delegate = self
         
     }
     
@@ -136,7 +138,11 @@ class RunViewController: BaseViewController {
     }
     
     private func centerMap(run : Run) -> MKCoordinateRegion{
-         
+        guard let (minLocation, maxLocation) = getMinMaxLocation(run: run) else {
+            return MKCoordinateRegion()
+        }
+        
+        return MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: (minLocation.latitude + maxLocation.latitude) / 2 , longitude: (minLocation.longitude + maxLocation.longitude) / 2), span:  MKCoordinateSpan(latitudeDelta: (maxLocation.latitude - minLocation.latitude) * 1.5, longitudeDelta: (maxLocation.longitude - minLocation.longitude ) * 1.5)  )
     }
     
     private func getMinMaxLocation(run : Run) -> (min: CLLocationCoordinate2D, max: CLLocationCoordinate2D)? {

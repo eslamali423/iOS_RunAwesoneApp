@@ -139,6 +139,33 @@ class RunViewController: BaseViewController {
          
     }
     
+    private func getMinMaxLocation(run : Run) -> (min: CLLocationCoordinate2D, max: CLLocationCoordinate2D)? {
+        let locations = run.locations
+        
+        guard let firstLocation = locations.first else {
+            return nil
+        }
+        
+        var minLatitude = firstLocation.latiude
+        var minLongtude = firstLocation.longtude
+        
+        var maxLatitude = minLatitude
+        var maxLongitude = minLongtude
+        
+        for location in locations {
+            minLatitude = min(minLatitude, location.latiude)
+            minLongtude = min(minLongtude, location.longtude)
+            
+            maxLatitude = max(maxLatitude, location.latiude)
+            maxLongitude = max(maxLatitude, location.longtude)
+            
+        }
+        
+        return (min: CLLocationCoordinate2D(latitude: minLatitude, longitude: minLongtude), max:(CLLocationCoordinate2D(latitude: maxLatitude, longitude: maxLongitude)))
+        
+        
+    }
+    
     
 }
 

@@ -127,7 +127,7 @@ class RunViewController: BaseViewController {
         map.addAnnotation(endPoint )
     
     }
-    
+//MARK:- get Polyline
     private func  getPolyline(run : Run) -> MKPolyline {
         var coord = [CLLocationCoordinate2D]()
         for location in run.locations {
@@ -137,6 +137,7 @@ class RunViewController: BaseViewController {
         return MKPolyline(coordinates: coord, count: run.locations.count)
     }
     
+    //MARK:- center the map and zoom into start point and end point
     private func centerMap(run : Run) -> MKCoordinateRegion{
         guard let (minLocation, maxLocation) = getMinMaxLocation(run: run) else {
             return MKCoordinateRegion()
@@ -145,6 +146,7 @@ class RunViewController: BaseViewController {
         return MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: (minLocation.latitude + maxLocation.latitude) / 2 , longitude: (minLocation.longitude + maxLocation.longitude) / 2), span:  MKCoordinateSpan(latitudeDelta: (maxLocation.latitude - minLocation.latitude) * 1.5, longitudeDelta: (maxLocation.longitude - minLocation.longitude ) * 1.5)  )
     }
     
+    //MARK:- get Min and Max Location to calculate start Point and End point 
     private func getMinMaxLocation(run : Run) -> (min: CLLocationCoordinate2D, max: CLLocationCoordinate2D)? {
         let locations = run.locations
         

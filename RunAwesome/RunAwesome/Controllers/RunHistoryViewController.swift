@@ -133,8 +133,7 @@ extension RunHistoryViewController : UITableViewDelegate, UITableViewDataSource 
         
         let vc = RunViewController(run: run)
         present(vc, animated: true, completion: nil)
-//        
-//        print(run.distance.metersToMiles().toString(palces: 2))
+
     }
    
 }
